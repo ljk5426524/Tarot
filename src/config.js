@@ -13,7 +13,7 @@ const apiUrlList = {
 module.exports = {
   port: '8000',
 
-  projectName: 'xx项目',
+  projectName: '塔罗牌',
 
   // h5 or cms web
   projectPlatform: 'h5',
@@ -37,14 +37,14 @@ module.exports = {
     test: {
       name: 'test',
       api: apiUrlList['test'],
-      publicPath: '/h5',
-      routerPath: '/h5',
+      publicPath: '/file/tarot',
+      routerPath: '/file/tarot',
     },
     production: {
       name: 'production',
       api: apiUrlList['production'],
-      publicPath: '/h5',
-      routerPath: '/h5',
+      publicPath: '/file/tarot',
+      routerPath: '/file/tarot',
     },
   },
 }

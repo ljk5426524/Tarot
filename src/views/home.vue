@@ -1,7 +1,18 @@
 <template>
   <div class="page">
     <div class="card-cover">
-      <img alt="" src="@/assets/images/tarot.jpg" />
+      <img
+        alt=""
+        :class="front ? 'front' : 'back'"
+        src="@/assets/images/tarot.jpg"
+        @click="change"
+      />
+      <img
+        alt=""
+        :class="front ? 'back' : 'front'"
+        src="@/assets/images/1.jpg"
+        @click="change"
+      />
     </div>
     <div class="card-explain-content">
       <div class="title">「隐士」</div>
@@ -32,7 +43,9 @@ export default {
   props: {},
 
   data() {
-    return {}
+    return {
+      front: false,
+    }
   },
 
   computed: {},
@@ -45,7 +58,12 @@ export default {
 
   destroyed() {},
 
-  methods: {},
+  methods: {
+    change() {
+      const { front } = this
+      this.front = !front
+    },
+  },
 }
 </script>
 
@@ -53,12 +71,35 @@ export default {
 @import '~@/styles/mixins';
 
 .card-cover {
+  position: relative;
   margin: 20px auto;
   width: 300px;
-  overflow: hidden;
-  border-radius: 4px;
-  background: #fff;
-  box-shadow: 11px 11px 30px #a1a1a1, -11px -11px 30px #fff;
+  height: 450px;
+
+  .back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transform: rotateY(0deg);
+    transition-duration: 0.2s;
+    transition-delay: 0.2s;
+    overflow: hidden;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 11px 11px 30px #a1a1a1, -11px -11px 30px #fff;
+  }
+  .front {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transform: rotateY(90deg);
+    transition-duration: 0.2s;
+    transition-delay: 0s;
+    overflow: hidden;
+    border-radius: 4px;
+    background: #fff;
+    box-shadow: 11px 11px 30px #a1a1a1, -11px -11px 30px #fff;
+  }
 }
 
 .card-explain-content {

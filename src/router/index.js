@@ -13,7 +13,7 @@ export const constantRoutes = [
     path: '/home',
     component: () => import('@/views/home'),
     name: 'Home',
-    meta: { title: '首页' },
+    meta: { title: '每日一卡' },
   },
 
   {
@@ -28,13 +28,6 @@ export const constantRoutes = [
     name: 'Divination',
     meta: { title: '抽三张' },
   },
-  {
-    path: '/post/:id/comment-list',
-    component: () => import('@/views/comment-list'),
-    name: 'CommentList',
-    meta: { title: '评论列表页' },
-  },
-
   {
     path: '/no-found',
     component: () => import('@/views/no-found'),
