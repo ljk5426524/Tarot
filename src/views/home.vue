@@ -57,16 +57,19 @@ export default {
   width: 300px;
   overflow: hidden;
   border-radius: 4px;
-  background: #ffffff;
-  box-shadow: 11px 11px 30px #a1a1a1, -11px -11px 30px #ffffff;
+  background: #fff;
+  box-shadow: 11px 11px 30px #a1a1a1, -11px -11px 30px #fff;
 }
+
 .card-explain-content {
   padding: 16px 20px;
+
   .title {
     font-size: 20px;
     font-weight: bold;
     text-align: center;
   }
+
   .explain {
     margin-top: 20px;
     padding: 0 10px;

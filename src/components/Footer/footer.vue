@@ -68,9 +68,11 @@ export default {
   height: 56px;
   z-index: 10;
 }
+
 .no-raed {
   position: relative;
-  &:after {
+
+  &::after {
     content: '';
     position: absolute;
     top: -26px;
@@ -82,4 +84,3 @@ export default {
   }
 }
 </style>
-  

@@ -49,27 +49,32 @@ export default {
 <style lang="less" scoped>
 .card-content {
   padding: 40px 20px;
+
   .card-pic {
     display: flex;
     justify-content: space-between;
+
     .card-cover {
       width: 90px;
       overflow: hidden;
       border-radius: 2px;
-      background: #ffffff;
-      box-shadow: 11px 11px 30px #a1a1a1, -11px -11px 30px #ffffff;
+      background: #fff;
+      box-shadow: 11px 11px 30px #a1a1a1, -11px -11px 30px #fff;
     }
+
     .card-title {
       text-align: center;
       font-size: 14px;
       margin: 20px auto;
     }
   }
+
   .card-info {
     padding: 10px;
     font-size: 18px;
     font-weight: bold;
   }
+
   .explain {
     padding: 10px;
     font-size: 14px;
