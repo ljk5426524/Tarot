@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="page">
     <div class="card-cover">
       <img alt="" src="@/assets/images/tarot.jpg" />
     </div>
