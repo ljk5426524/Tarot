@@ -17,12 +17,17 @@ export const constantRoutes = [
   },
 
   {
-    path: '/post/:id',
-    component: () => import('@/views/post'),
-    name: 'Post',
-    meta: { title: '详情' },
+    path: '/love',
+    component: () => import('@/views/love'),
+    name: 'Love',
+    meta: { title: '爱情占卜' },
   },
-
+  {
+    path: '/divination',
+    component: () => import('@/views/divination'),
+    name: 'Divination',
+    meta: { title: '抽三张' },
+  },
   {
     path: '/post/:id/comment-list',
     component: () => import('@/views/comment-list'),

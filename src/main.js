@@ -14,8 +14,10 @@ import '@/styles/app.less'
 // 此处转为内嵌的 base64
 import 'vant/lib/icon/local.css'
 
-import { Button, Cell, CellGroup } from 'vant'
-;[Button, Cell, CellGroup].forEach(item => Vue.use(item))
+import { Button, Cell, CellGroup, Tabbar, Icon,
+  TabbarItem, } from 'vant'
+;[Button, Cell, CellGroup, Tabbar, Icon,
+  TabbarItem,].forEach(item => Vue.use(item))
 
 import vconsole from 'vconsole'
 
