@@ -70,20 +70,22 @@
         <div class="unstart-content" :class="isStart ? 'clear' : ''">
           <div class="start-btn" @click="start">start</div>
         </div>
-        <!-- <div class="card-info">卡牌信息</div>
-      <div class="explain">
-        这三张牌加在一起可以给你一个完整的讯息。要记住，它们是互相关联的。
-        并不是说第一张牌反映出你生活的某一面，而第二张牌是谈到完全不同的一件事。
-        每一个位置的牌都会谈到其他两张牌的某些东西。
-        简单来讲，第一张牌就是你现在所处的位置，第三张牌是你可以进入的最佳位置，第二张牌则是你要达到那里所需要的了解或道路。
-      </div>
-      <div class="card-info">代表寓意</div>
-      <div class="explain">
-        这三张牌加在一起可以给你一个完整的讯息。要记住，它们是互相关联的。
-        并不是说第一张牌反映出你生活的某一面，而第二张牌是谈到完全不同的一件事。
-        每一个位置的牌都会谈到其他两张牌的某些东西。
-        简单来讲，第一张牌就是你现在所处的位置，第三张牌是你可以进入的最佳位置，第二张牌则是你要达到那里所需要的了解或道路。
-      </div> -->
+        <div v-show="front1Show && front2Show && front3Show">
+          <div class="card-info">卡牌信息</div>
+          <div class="explain">
+            这三张牌加在一起可以给你一个完整的讯息。要记住，它们是互相关联的。
+            并不是说第一张牌反映出你生活的某一面，而第二张牌是谈到完全不同的一件事。
+            每一个位置的牌都会谈到其他两张牌的某些东西。
+            简单来讲，第一张牌就是你现在所处的位置，第三张牌是你可以进入的最佳位置，第二张牌则是你要达到那里所需要的了解或道路。
+          </div>
+          <div class="card-info">代表寓意</div>
+          <div class="explain">
+            这三张牌加在一起可以给你一个完整的讯息。要记住，它们是互相关联的。
+            并不是说第一张牌反映出你生活的某一面，而第二张牌是谈到完全不同的一件事。
+            每一个位置的牌都会谈到其他两张牌的某些东西。
+            简单来讲，第一张牌就是你现在所处的位置，第三张牌是你可以进入的最佳位置，第二张牌则是你要达到那里所需要的了解或道路。
+          </div>
+        </div>
       </div>
     </div>
     <Footer :footActive="2" class="myfooter"></Footer>
@@ -173,6 +175,7 @@ export default {
       left: 50%;
       transform: translateX(-50%);
       opacity: 0;
+      z-index: -1;
 
       .back {
         width: 100%;
@@ -297,11 +300,13 @@ export default {
 
     1% {
       opacity: 1;
+      z-index: 0;
     }
 
     100% {
       transform: translate(calc(-170%), 160px);
       opacity: 1;
+      z-index: 0;
     }
   }
 
@@ -312,11 +317,13 @@ export default {
 
     1% {
       opacity: 1;
+      z-index: 0;
     }
 
     100% {
       transform: translateX(-50%) translateY(160px);
       opacity: 1;
+      z-index: 0;
     }
   }
 
@@ -327,11 +334,13 @@ export default {
 
     1% {
       opacity: 1;
+      z-index: 0;
     }
 
     100% {
       transform: translateX(calc(70%)) translateY(160px);
       opacity: 1;
+      z-index: 0;
     }
   }
 
