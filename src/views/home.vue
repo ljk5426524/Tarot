@@ -75,12 +75,13 @@ export default {
   margin: 20px auto;
   width: 300px;
   height: 450px;
+  transform-style: preserve-3d;
 
   .back {
     width: 100%;
     height: 100%;
     position: absolute;
-    transform: rotateY(0deg);
+    transform: rotateY(0deg) scale(0.8);
     transition-duration: 0.2s;
     transition-delay: 0.2s;
     overflow: hidden;
@@ -88,11 +89,12 @@ export default {
     background: #fff;
     box-shadow: 11px 11px 30px #a1a1a1, -11px -11px 30px #fff;
   }
+
   .front {
     width: 100%;
     height: 100%;
     position: absolute;
-    transform: rotateY(90deg);
+    transform: rotateY(90deg) scale(1);
     transition-duration: 0.2s;
     transition-delay: 0s;
     overflow: hidden;
@@ -103,7 +105,7 @@ export default {
 }
 
 .card-explain-content {
-  padding: 16px 20px;
+  padding: 10px 20px;
 
   .title {
     font-size: 20px;
