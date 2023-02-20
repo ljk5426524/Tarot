@@ -19,14 +19,14 @@
             <div class="card-cover" :class="isOver ? 'cover-left' : ''">
               <img
                 alt=""
-                src="@/assets/images/tarot.jpg"
+                src="@/assets/images/tarot1.png"
                 :class="front1 ? 'front' : 'back'"
                 @click="change(1, true)"
               />
               <img
                 alt=""
                 :class="front1 ? 'back' : 'front'"
-                src="@/assets/images/1.jpg"
+                src="@/assets/images/0.png"
                 @click="change(1, false)"
               />
             </div>
@@ -36,14 +36,14 @@
             <div class="card-cover" :class="isOver ? 'cover-middle' : ''">
               <img
                 alt=""
-                src="@/assets/images/tarot.jpg"
+                src="@/assets/images/tarot1.png"
                 :class="front2 ? 'front' : 'back'"
                 @click="change(2, true)"
               />
               <img
                 alt=""
                 :class="front2 ? 'back' : 'front'"
-                src="@/assets/images/1.jpg"
+                src="@/assets/images/0.png"
                 @click="change(2, false)"
               />
             </div>
@@ -53,14 +53,14 @@
             <div class="card-cover" :class="isOver ? 'cover-right' : ''">
               <img
                 alt=""
-                src="@/assets/images/tarot.jpg"
+                src="@/assets/images/tarot1.png"
                 :class="front3 ? 'front' : 'back'"
                 @click="change(3, true)"
               />
               <img
                 alt=""
                 :class="front3 ? 'back' : 'front'"
-                src="@/assets/images/1.jpg"
+                src="@/assets/images/0.png"
                 @click="change(3, false)"
               />
             </div>
@@ -255,7 +255,7 @@ export default {
       position: absolute;
       width: 100px;
       height: 150px;
-      background-image: url('../assets/images/tarot.jpg');
+      background-image: url('../assets/images/tarot1.png');
       background-size: 100%;
       top: calc(50% - 200px / 2);
       border: 1px solid dimgray;
@@ -271,7 +271,7 @@ export default {
       position: absolute;
       width: 100px;
       height: 150px;
-      background-image: url('../assets/images/tarot.jpg');
+      background-image: url('../assets/images/tarot1.png');
       background-size: 100%;
       top: calc(50% - 200px / 2);
       border: 1px solid dimgray;
