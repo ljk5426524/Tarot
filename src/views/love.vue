@@ -1,7 +1,7 @@
 <template>
   <div class="page">
     <div class="card-cover">
-      <img alt="" src="@/assets/images/tarot.jpg" />
+      <img alt="" src="@/assets/images/tarot1.png" />
     </div>
     <div class="card-explain-content">
       <div class="title">「皇后」</div>

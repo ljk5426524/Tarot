@@ -4,13 +4,13 @@
       <img
         alt=""
         :class="front ? 'front' : 'back'"
-        src="@/assets/images/tarot.jpg"
+        src="@/assets/images/tarot1.png"
         @click="change"
       />
       <img
         alt=""
         :class="front ? 'back' : 'front'"
-        src="@/assets/images/1.jpg"
+        src="@/assets/images/资源 9.png"
         @click="change"
       />
     </div>
@@ -94,8 +94,8 @@ export default {
     transition-delay: 0.2s;
     overflow: hidden;
     border-radius: 10px;
-    background: #fff;
-    box-shadow: 11px 11px 30px #a1a1a1, -11px -11px 30px #fff;
+    //background: #fff;
+    //box-shadow: 11px 11px 30px #a1a1a1, -11px -11px 30px #fff;
   }
 
   .front {
@@ -107,8 +107,8 @@ export default {
     transition-delay: 0s;
     overflow: hidden;
     border-radius: 4px;
-    background: #fff;
-    box-shadow: 11px 11px 30px #a1a1a1, -11px -11px 30px #fff;
+    //background: #fff;
+    //box-shadow: 11px 11px 30px #a1a1a1, -11px -11px 30px #fff;
   }
 }
 
@@ -126,7 +126,7 @@ export default {
     padding: 0 10px;
     font-size: 14px;
     line-height: 24px;
-    color: #999;
+    color: #fff;
   }
 }
 </style>
