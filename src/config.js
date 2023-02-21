@@ -1,13 +1,12 @@
 const apiUrlList = {
   // 本地研发环境
   local: 'http://jsonplaceholder.typicode.com',
-  developer1: 'http://1.1.1.1:8080/project', // developer1
-  developer2: 'http://1.1.1.2:8080/project', // developer2
+  developer1: 'http://47.96.121.138:82', // developer1
 
   // 服务器环境
   dev: '/interface', // 开发
   test: '/interface', // 测试
-  production: '/interface', // 生产
+  production: '/', // 生产
 }
 
 module.exports = {

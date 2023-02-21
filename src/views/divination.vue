@@ -250,6 +250,7 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+
     .card-item {
       box-sizing: border-box;
       position: absolute;

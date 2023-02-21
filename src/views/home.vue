@@ -54,7 +54,9 @@ export default {
 
   created() {},
 
-  mounted() {},
+  mounted() {
+    this.getCardsList()
+  },
 
   destroyed() {},
 
@@ -62,6 +64,12 @@ export default {
     change() {
       const { front } = this
       this.front = !front
+    },
+    // 卡牌列表
+    getCardsList() {
+      this.$api.getCardsList({}).then((res) => {
+        console.log(123)
+      })
     },
   },
 }
