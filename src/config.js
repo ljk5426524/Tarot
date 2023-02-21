@@ -2,6 +2,7 @@ const apiUrlList = {
   // 本地研发环境
   local: 'http://jsonplaceholder.typicode.com',
   developer1: 'http://47.96.121.138:82', // developer1
+  apiProxy: '/apiProxy', // developer1
 
   // 服务器环境
   dev: '/interface', // 开发

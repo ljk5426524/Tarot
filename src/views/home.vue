@@ -68,7 +68,8 @@ export default {
     // 卡牌列表
     getCardsList() {
       this.$api.getCardsList({}).then((res) => {
-        console.log(123)
+        const { data: cardList } = res
+        
       })
     },
   },

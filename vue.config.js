@@ -65,7 +65,18 @@ module.exports = {
       warnings: true,
       errors: true,
     },
-
+    proxy: {
+      // change xxx-api/login => mock/login
+      // detail: https://cli.vuejs.org/config/#devserver-proxy
+      '/apiProxy': {
+        target: `http://47.96.121.138:82/`,
+        // https 失效时，用 ip
+        // target: `http://10.2.175.61:18081`,
+        pathRewrite: {
+          '^/apiProxy': '',
+        },
+      }
+    },
     // enable https protocol
     // https: true,
   },
