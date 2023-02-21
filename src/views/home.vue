@@ -15,13 +15,10 @@
       />
     </div>
     <div class="card-explain-content">
-      <div class="title">「隐士」</div>
+      <div class="title">「{{cardInfo.name}}」</div>
       <div class="explain">
         <p>
-          正位：一意孤行，流浪，活力无限又潜力无限，愚蠢无知，追求梦想，未知，天真的爱
-        </p>
-        <p>
-          逆位：漂泊，冒险，鲁莽，冒失，疯狂，无视物质损失，灵魂堕落，内心空虚，感情轻浮
+          {{cardInfo.sketch}}
         </p>
       </div>
     </div>
@@ -45,6 +42,7 @@ export default {
   data() {
     return {
       front: false,
+      cardInfo:{}
     }
   },
 
@@ -67,9 +65,9 @@ export default {
     },
     // 卡牌列表
     getCardsList() {
-      this.$api.getCardsList({}).then((res) => {
+      this.$api.getCardsList({}).then(res => {
         const { data: cardList } = res
-        
+        this.cardInfo = cardList[Math.round(Math.random()*22)]
       })
     },
   },
