@@ -1,26 +1,32 @@
 <template>
   <div>
-    <van-tabbar active-color="#307DEE" v-model="footValue" @change="onChange">
+    <van-tabbar v-model="footValue" @change="onChange">
       <van-tabbar-item>
-        <span>每日一卡</span>
+        <!-- <span>每日一卡</span> -->
         <template #icon="props">
-          <van-icon
-            name="gift-card-o"
-            :color="props.active ? '#307dee' : '#999'"
+          <img
+            class="icon-tabbar"
+            :src="props.active ? iconCard.active : iconCard.inactive"
           />
         </template>
       </van-tabbar-item>
       <van-tabbar-item>
-        <span>爱情占卜</span>
+        <!-- <span>爱情占卜</span> -->
         <template #icon="props">
-          <van-icon name="like-o" :color="props.active ? '#307dee' : '#999'" />
+          <img
+            class="icon-tabbar"
+            :src="props.active ? iconLove.active : iconLove.inactive"
+          />
         </template>
       </van-tabbar-item>
 
       <van-tabbar-item>
-        <span>抽三张</span>
+        <!-- <span>抽三张</span> -->
         <template #icon="props">
-          <van-icon name="star-o" :color="props.active ? '#307dee' : '#999'" />
+          <img
+            class="icon-tabbar"
+            :src="props.active ? iconBook.active : iconBook.inactive"
+          />
         </template>
       </van-tabbar-item>
     </van-tabbar>
@@ -40,6 +46,18 @@ export default {
   },
   data() {
     return {
+      iconCard: {
+        active: require('@/assets/images/icon-day.png'),
+        inactive: require('@/assets/images/icon-day.png'),
+      },
+      iconLove: {
+        active: require('@/assets/images/icon-love.png'),
+        inactive: require('@/assets/images/icon-love.png'),
+      },
+      iconBook: {
+        active: require('@/assets/images/icon-book.png'),
+        inactive: require('@/assets/images/icon-book.png'),
+      },
       footValue: this.footActive,
     }
   },
@@ -65,22 +83,18 @@ export default {
 </script>
 <style lang="less">
 .van-tabbar--fixed {
-  height: 56px;
+  height: 80px;
   z-index: 10;
 }
-
-.no-raed {
-  position: relative;
-
-  &::after {
-    content: '';
-    position: absolute;
-    top: -26px;
-    right: -2px;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background-color: red;
+.van-hairline--top-bottom {
+  &:after {
+    border-color: #000;
+  }
+  .van-tabbar-item {
+    background-color: #000;
+    .icon-tabbar {
+      height: 40px !important;
+    }
   }
 }
 </style>
