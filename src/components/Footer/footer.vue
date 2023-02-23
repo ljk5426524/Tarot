@@ -86,12 +86,15 @@ export default {
   height: 80px;
   z-index: 10;
 }
+
 .van-hairline--top-bottom {
-  &:after {
+  &::after {
     border-color: #000;
   }
+
   .van-tabbar-item {
     background-color: #000;
+
     .icon-tabbar {
       height: 40px !important;
     }

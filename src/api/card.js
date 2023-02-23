@@ -7,3 +7,12 @@ import request from '@/utils/request'
       data,
     })
   }
+
+
+ export function getDaylyCard(data) {
+  return request({
+    url: '/api/v1/majorArcanaDay/day',
+    method: 'get',
+    data,
+  })
+}

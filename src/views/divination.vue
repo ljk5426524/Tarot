@@ -1,34 +1,66 @@
 <template>
-  <div>
+  <div class="page">
     <div class="card-content">
       <div class="play-content">
         <div class="card-shaffle">
-          <span :class="isStart ? 'card-item' : 'card-item-init'"></span>
-          <span :class="isStart ? 'card-item' : 'card-item-init'"></span>
-          <span :class="isStart ? 'card-item' : 'card-item-init'"></span>
-          <span :class="isStart ? 'card-item' : 'card-item-init'"></span>
-          <span :class="isStart ? 'card-item' : 'card-item-init'"></span>
-          <span :class="isStart ? 'card-item' : 'card-item-init'"></span>
-          <span :class="isStart ? 'card-item' : 'card-item-init'"></span>
-          <span :class="isStart ? 'card-item' : 'card-item-init'"></span>
-          <span :class="isStart ? 'card-item' : 'card-item-init'"></span>
-          <span :class="isStart ? 'card-item' : 'card-item-init'"></span>
+          <span
+            class="card-item-init"
+            :class="isStart ? 'card-item' : ''"
+          ></span>
+          <span
+            class="card-item-init"
+            :class="isStart ? 'card-item' : ''"
+          ></span>
+          <span
+            class="card-item-init"
+            :class="isStart ? 'card-item' : ''"
+          ></span>
+          <span
+            class="card-item-init"
+            :class="isStart ? 'card-item' : ''"
+          ></span>
+          <span
+            class="card-item-init"
+            :class="isStart ? 'card-item' : ''"
+          ></span>
+          <span
+            class="card-item-init"
+            :class="isStart ? 'card-item' : ''"
+          ></span>
+          <span
+            class="card-item-init"
+            :class="isStart ? 'card-item' : ''"
+          ></span>
+          <span
+            class="card-item-init"
+            :class="isStart ? 'card-item' : ''"
+          ></span>
+          <span
+            class="card-item-init"
+            :class="isStart ? 'card-item' : ''"
+          ></span>
+          <span
+            class="card-item-init"
+            :class="isStart ? 'card-item' : ''"
+          ></span>
         </div>
         <div class="card-pic">
           <div class="card-infos">
             <div class="card-cover" :class="isOver ? 'cover-left' : ''">
               <img
                 alt=""
-                src="@/assets/images/tarot1.png"
+                src="@/assets/images/card-back-moon.png"
                 :class="front1 ? 'front' : 'back'"
                 @click="change(1, true)"
               />
-              <img
-                alt=""
-                :class="front1 ? 'back' : 'front'"
-                src="@/assets/images/0.png"
-                @click="change(1, false)"
-              />
+              <div class="cover" :class="front1 ? 'back' : 'front'">
+                <img
+                  alt=""
+                  class="cover-front"
+                  src="http://47.96.121.138:82/file/card/12.png"
+                  @click="change(1, false)"
+                />
+              </div>
             </div>
             <div v-show="front1Show" class="card-title">「命运之轮」</div>
           </div>
@@ -36,16 +68,18 @@
             <div class="card-cover" :class="isOver ? 'cover-middle' : ''">
               <img
                 alt=""
-                src="@/assets/images/tarot1.png"
+                src="@/assets/images/card-back-moon.png"
                 :class="front2 ? 'front' : 'back'"
                 @click="change(2, true)"
               />
-              <img
-                alt=""
-                :class="front2 ? 'back' : 'front'"
-                src="@/assets/images/0.png"
-                @click="change(2, false)"
-              />
+              <div class="cover" :class="front2 ? 'back' : 'front'">
+                <img
+                  alt=""
+                  class="cover-front"
+                  src="http://47.96.121.138:82/file/card/12.png"
+                  @click="change(2, false)"
+                />
+              </div>
             </div>
             <div v-show="front2Show" class="card-title">「高塔」</div>
           </div>
@@ -53,16 +87,18 @@
             <div class="card-cover" :class="isOver ? 'cover-right' : ''">
               <img
                 alt=""
-                src="@/assets/images/tarot1.png"
+                src="@/assets/images/card-back-moon.png"
                 :class="front3 ? 'front' : 'back'"
                 @click="change(3, true)"
               />
-              <img
-                alt=""
-                :class="front3 ? 'back' : 'front'"
-                src="@/assets/images/0.png"
-                @click="change(3, false)"
-              />
+              <div class="cover" :class="front3 ? 'back' : 'front'">
+                <img
+                  alt=""
+                  class="cover-front"
+                  src="http://47.96.121.138:82/file/card/12.png"
+                  @click="change(3, false)"
+                />
+              </div>
             </div>
             <div v-show="front3Show" class="card-title">「审判」</div>
           </div>
@@ -132,6 +168,13 @@ export default {
 }
 </script>
 <style lang="less" scoped>
+.page {
+  // background-image: url('../assets/images/sel-bg.png');
+  // background-size: 100%;
+  // background-repeat: no-repeat;
+  min-height: 100vh;
+  // background-color: #000;
+}
 .card-content {
   padding: 40px 20px;
 
@@ -168,40 +211,50 @@ export default {
     .card-cover {
       width: 100px;
       height: 150px;
-      border-radius: 2px;
-      background: #fff;
+      border-radius: 10px;
       position: absolute;
       top: 20px;
       left: 50%;
       transform: translateX(-50%);
       opacity: 0;
       z-index: -1;
-
+      .cover {
+        position: relative;
+        &:after {
+          content: '';
+          display: block;
+          position: absolute;
+          top: 0;
+          width: 100px;
+          height: 150px;
+          background-color: #fff;
+          z-index: -1;
+        }
+      }
+      .cover-front {
+        width: 100px;
+        height: 150px;
+      }
       .back {
-        width: 100%;
-        height: 100%;
+        width: 100px;
+        height: 150px;
         position: absolute;
         transform: rotateY(0deg) scale(1);
         transition-duration: 0.2s;
         transition-delay: 0.2s;
         overflow: hidden;
-        border-radius: 4px;
-        border: 1px solid dimgray;
-        background: #fff;
-        box-shadow: 11px 11px 30px #a1a1a1, -11px -11px 30px #fff;
+        border-radius: 10px;
       }
 
       .front {
-        width: 100%;
-        height: 100%;
+        width: 100px;
+        height: 150px;
         position: absolute;
         transform: rotateY(90deg) scale(1.1);
         transition-duration: 0.2s;
         transition-delay: 0s;
         overflow: hidden;
         border-radius: 4px;
-        background: #fff;
-        box-shadow: 11px 11px 30px #a1a1a1, -11px -11px 30px #fff;
       }
 
       &.cover-left {
@@ -252,31 +305,27 @@ export default {
     align-items: center;
 
     .card-item {
-      box-sizing: border-box;
       position: absolute;
       width: 100px;
       height: 150px;
-      background-image: url('../assets/images/tarot1.png');
-      background-size: 100%;
+      background-image: url('../assets/images/card-back-moon.png');
+      background-size: 100% 100%;
       top: calc(50% - 200px / 2);
-      border: 1px solid dimgray;
-      border-radius: 4px;
+      border-radius: 6px;
       transform-origin: right;
-      animation: rotating 3s ease;
-      animation-delay: calc((var(--n)) * 0.08s);
+      animation: rotating 3s ease calc((var(--n)) * 0.08s);
       animation-fill-mode: forwards;
+      transform: rotate(0deg);
     }
 
     .card-item-init {
-      box-sizing: border-box;
       position: absolute;
       width: 100px;
       height: 150px;
-      background-image: url('../assets/images/tarot1.png');
-      background-size: 100%;
+      background-image: url('../assets/images/card-back-moon.png');
+      background-size: 100% 100%;
       top: calc(50% - 200px / 2);
-      border: 1px solid dimgray;
-      border-radius: 4px;
+      border-radius: 6px;
     }
   }
 
@@ -284,13 +333,15 @@ export default {
     0% {
       transform: rotate(0deg);
     }
-
-    50% {
-      transform: rotate(360deg);
+    35% {
+      transform: rotate(179deg);
+    }
+    70% {
+      transform: rotate(358deg);
     }
 
     100% {
-      transform: translateY(-70px);
+      transform: rotate(360deg) translateY(-70px);
     }
   }
 

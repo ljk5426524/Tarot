@@ -41,7 +41,7 @@ service.interceptors.request.use(
 
     // 自定义 loading、加载文字、传参数据类型与方式 及 状态码等
     const {
-      showLoading = true,
+      showLoading = false,
       loadingText = '加载中...',
       contentType,
       inParam,

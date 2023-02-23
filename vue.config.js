@@ -69,11 +69,11 @@ module.exports = {
       // change xxx-api/login => mock/login
       // detail: https://cli.vuejs.org/config/#devserver-proxy
       '/apiProxy': {
-        target: `http://47.96.121.138:82/`,
+        target: `http://101.43.30.133:888/`,
         pathRewrite: {
           '^/apiProxy': '',
         },
-      }
+      },
     },
     // enable https protocol
     // https: true,
