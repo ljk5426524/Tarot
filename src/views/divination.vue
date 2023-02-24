@@ -169,12 +169,13 @@ export default {
 </script>
 <style lang="less" scoped>
 .page {
-  // background-image: url('../assets/images/sel-bg.png');
-  // background-size: 100%;
-  // background-repeat: no-repeat;
+  background-image: url('../assets/images/sel-bg.png');
+  background-size: 100%;
+  background-repeat: no-repeat;
   min-height: 100vh;
-  // background-color: #000;
+  background-color: #000;
 }
+
 .card-content {
   padding: 40px 20px;
 
@@ -218,9 +219,11 @@ export default {
       transform: translateX(-50%);
       opacity: 0;
       z-index: -1;
+
       .cover {
         position: relative;
-        &:after {
+
+        &::after {
           content: '';
           display: block;
           position: absolute;
@@ -231,10 +234,12 @@ export default {
           z-index: -1;
         }
       }
+
       .cover-front {
         width: 100px;
         height: 150px;
       }
+
       .back {
         width: 100px;
         height: 150px;
@@ -333,9 +338,11 @@ export default {
     0% {
       transform: rotate(0deg);
     }
+
     35% {
       transform: rotate(179deg);
     }
+
     70% {
       transform: rotate(358deg);
     }
