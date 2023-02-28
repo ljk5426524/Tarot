@@ -4,6 +4,7 @@ import Cookies from 'js-cookie'
  * Cookie
  * @param {*} name 名称
  * @param {*} value 值
+ * @param {*} time 时效 默认7天
  */
 
 export function getCookie(name) {
@@ -14,8 +15,8 @@ export function getCookieJSON(name) {
   return Cookies.getJSON(name)
 }
 
-export function setCookie(name, value) {
-  return Cookies.set(name, value)
+export function setCookie(name, value, time = 7) {
+  return Cookies.set(name, value, { expires: time })
 }
 
 export function removeCookie(name) {

@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <div class="loading">
+    <!-- <div class="loading">
       <div class="loading-text">
         <span class="loading-text-words">L</span>
         <span class="loading-text-words">O</span>
@@ -10,8 +10,8 @@
         <span class="loading-text-words">N</span>
         <span class="loading-text-words">G</span>
       </div>
-    </div>
-    <div class="home-float">
+    </div> -->
+    <div class="home-float" v-if="loadingShow">
       <img class="text" src="@/assets/images/text.png" />
       <img class="bg-middle" src="@/assets/images/bg-middle.png" />
     </div>
@@ -23,24 +23,22 @@
         @click="change"
       />
       <div class="cover" :class="front ? 'back' : 'front'">
-        <img
-          alt=""
-          class="cover-front"
-          :src="cardInfo.fileUrl"
-          @click="change"
-        />
+        <img alt="" class="cover-front" :src="cardInfo.fileUrl" />
       </div>
     </div>
+    <div v-if="!answerShow" class="card-tip">请点击上方卡牌</div>
     <div class="card-explain-content" v-if="answerShow">
-      <div class="title">「{{ cardInfo.name || '愚人' }}」</div>
-      <div class="explain">
-        <p>
-          {{
-            cardInfo.sketch ||
-            '愚人是一个天真无邪的冒险家，即将展开一趟重要旅程。他抱持着满脑子希望，十足的理想主义，而不切实际；他身上的装扮当然也不会是为了旅行。'
-          }}
-        </p>
+      <div class="title">
+        大阿尔卡纳第{{ cardInfo.number }}号牌 {{ cardInfo.name }}-{{
+          cardInfo.type === 1 ? '正位' : '逆位'
+        }}
       </div>
+      <p class="explain">
+        {{ cardInfo.sketch }}
+      </p>
+      <p class="jump-text" @click="toChat">
+        让占卜师帮您解密 <van-icon name="share-o" />
+      </p>
     </div>
     <Footer :footActive="0" class="myfooter"></Footer>
   </div>
@@ -48,6 +46,8 @@
 
 <script>
 import Footer from '@/components/Footer/footer.vue'
+import { getCookie, setCookie } from '@/utils/cookie'
+import { wxLogin } from '@/utils/wechat'
 
 export default {
   name: 'Home',
@@ -63,6 +63,7 @@ export default {
       front: false,
       cardInfo: {},
       answerShow: false,
+      loadingShow: true,
     }
   },
 
@@ -70,11 +71,20 @@ export default {
 
   watch: {},
 
-  created() {},
-
-  mounted() {
-    this.getDaylyCard()
+  created() {
+    // wxLogin()
+    const isShowLoading = getCookie('showLoading') || 0
+    let seconds = 1200
+    let expires = new Date(new Date() * 1 + seconds * 1000)
+    console.log(isShowLoading)
+    if (!isShowLoading) {
+      setCookie('showLoading', 1, expires)
+    } else {
+      this.loadingShow = false
+    }
   },
+
+  mounted() {},
 
   destroyed() {},
 
@@ -82,13 +92,18 @@ export default {
     change() {
       const { front } = this
       this.front = !front
+      this.getDailyCard()
       this.answerShow = true
     },
     // 卡牌列表
-    getDaylyCard() {
-      this.$api.getDaylyCard({}).then((res) => {
+    getDailyCard() {
+      this.$api.getDailyCard({}).then((res) => {
         this.cardInfo = res.data
       })
+    },
+    // chat
+    toChat() {
+      this.$router.push('/chat')
     },
   },
 }
@@ -103,24 +118,26 @@ export default {
   background-repeat: no-repeat;
   min-height: 100vh;
   background-color: #000;
+
   .home-float {
     position: fixed;
     left: 0;
     right: 0;
     top: 0;
     bottom: 0;
-    z-index: 11;
+    z-index: 100;
     background-image: url('../assets/images/bg-head.png');
     background-size: 100%;
     background-repeat: no-repeat;
-    animation: frontHide 1s ease 7s;
+    animation: frontHide 1s ease 3s;
     animation-fill-mode: forwards;
+
     .text {
       position: absolute;
       left: 50%;
       top: 20%;
       transform: translateX(-50%) scale(0.5);
-      animation: textScale 2s ease 5s;
+      animation: textScale 2s ease 1s;
     }
   }
 
@@ -139,9 +156,11 @@ export default {
     width: 200px;
     height: 430px;
     z-index: 10;
+
     .cover {
       position: relative;
-      &:after {
+
+      &::after {
         content: '';
         display: block;
         position: absolute;
@@ -153,10 +172,12 @@ export default {
         border-radius: 16px;
       }
     }
+
     .cover-front {
       width: 200px;
       height: 300px;
     }
+
     .back {
       width: 200px;
       height: 300px;
@@ -180,102 +201,126 @@ export default {
     }
   }
 
+  .card-tip {
+    display: flex;
+    justify-content: center;
+    color: #d4aa72;
+  }
+
   .card-explain-content {
     padding: 10px 20px;
-    color: #d4aa72;
+    color: #f8c888;
 
     .title {
-      font-size: 20px;
       font-weight: bold;
+      font-size: 16px;
       text-align: center;
+      line-height: 24px;
     }
 
     .explain {
+      overflow: hidden;
       margin-top: 20px;
       padding: 0 10px;
       font-size: 14px;
       line-height: 24px;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      line-clamp: 2;
+      -webkit-box-orient: vertical;
+      word-break: break-all;
+    }
+
+    .jump-text {
+      text-align: center;
+      font-size: 14px;
     }
   }
 }
+
 @keyframes textScale {
   0% {
     transform: translateX(-50%) scale(0.5);
   }
+
   50% {
     transform: translateX(-50%) scale(0.8);
   }
+
   100% {
     transform: translateX(-50%) scale(0.5);
   }
 }
+
 @keyframes frontHide {
   0% {
     opacity: 1;
   }
+
   100% {
     opacity: 0;
     z-index: -1;
   }
 }
 
-.animat(@n, @i:1) when (@i <= @n) {
-  &:nth-child(@{i}) {
-    filter: blur(0px);
-    animation: blur-text 0.8s (@i / 5) + 0s infinite linear alternate;
-  }
-  .animat(@n, (@i + 1));
-}
-.loading {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #000;
-  z-index: 9999;
-  animation: hide-loadinng 2s ease 3s;
-  animation-fill-mode: forwards;
-}
+// .animat(@n, @i:1) when (@i <= @n) {
+//   &:nth-child(@{i}) {
+//     filter: blur(0px);
+//     animation: blur-text 0.8s (@i / 5) + 0s infinite linear alternate;
+//   }
+//   .animat(@n, (@i + 1));
+// }
+// .loading {
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 100%;
+//   background: #000;
+//   z-index: 9999;
+//   animation: hide-loadinng 2s ease 3s;
+//   animation-fill-mode: forwards;
+// }
 
-.loading-text {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-  text-align: center;
-  width: 100%;
-  height: 100px;
-  line-height: 100px;
-  span {
-    display: inline-block;
-    margin: 0 5px;
-    color: #fff;
-    font-family: 'Quattrocento Sans', sans-serif;
-    .animat(7);
-  }
-}
+// .loading-text {
+//   position: absolute;
+//   top: 0;
+//   bottom: 0;
+//   left: 0;
+//   right: 0;
+//   margin: auto;
+//   text-align: center;
+//   width: 100%;
+//   height: 100px;
+//   line-height: 100px;
+//   span {
+//     display: inline-block;
+//     margin: 0 5px;
+//     color: #fff;
+//     font-family: 'Quattrocento Sans', sans-serif;
+//     .animat(7);
+//   }
+// }
 
-@keyframes blur-text {
-  0% {
-    filter: blur(0px);
-  }
-  100% {
-    filter: blur(4px);
-  }
-}
-@keyframes hide-loadinng {
-  0% {
-    transform: translateY(0);
-  }
-  75% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(-100%);
-    z-index: -1;
-  }
-}
+// @keyframes blur-text {
+//   0% {
+//     filter: blur(0px);
+//   }
+//   100% {
+//     filter: blur(4px);
+//   }
+// }
+// @keyframes hide-loadinng {
+//   0% {
+//     transform: translateY(0);
+//   }
+//   75% {
+//     transform: translateY(0);
+//   }
+//   100% {
+//     transform: translateY(-100%);
+//     z-index: -1;
+//   }
+// }
 </style>

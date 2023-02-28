@@ -42,6 +42,7 @@
           <span
             class="card-item-init"
             :class="isStart ? 'card-item' : ''"
+            @click="start"
           ></span>
         </div>
         <div class="card-pic">
@@ -102,9 +103,6 @@
             </div>
             <div v-show="front3Show" class="card-title">「审判」</div>
           </div>
-        </div>
-        <div class="unstart-content" :class="isStart ? 'clear' : ''">
-          <div class="start-btn" @click="start">start</div>
         </div>
         <div v-show="front1Show && front2Show && front3Show">
           <div class="card-info">卡牌信息</div>

@@ -29,6 +29,12 @@ export const constantRoutes = [
     meta: { title: '抽三张' },
   },
   {
+    path: '/chat',
+    component: () => import('@/views/chat'),
+    name: 'Chat',
+    meta: { title: 'chat' },
+  },
+  {
     path: '/no-found',
     component: () => import('@/views/no-found'),
     name: 'NoFound',

@@ -1,8 +1,13 @@
 <template>
   <div>
-    <van-tabbar v-model="footValue" @change="onChange">
+    <van-tabbar
+      v-model="footValue"
+      @change="onChange"
+      active-color="#f8c888"
+      inactive-color="#999"
+    >
       <van-tabbar-item>
-        <!-- <span>每日一卡</span> -->
+        <span>每日运势</span>
         <template #icon="props">
           <img
             class="icon-tabbar"
@@ -11,7 +16,7 @@
         </template>
       </van-tabbar-item>
       <van-tabbar-item>
-        <!-- <span>爱情占卜</span> -->
+        <span>爱情占卜</span>
         <template #icon="props">
           <img
             class="icon-tabbar"
@@ -21,7 +26,7 @@
       </van-tabbar-item>
 
       <van-tabbar-item>
-        <!-- <span>抽三张</span> -->
+        <span>更多</span>
         <template #icon="props">
           <img
             class="icon-tabbar"
@@ -96,7 +101,11 @@ export default {
     background-color: #000;
 
     .icon-tabbar {
-      height: 40px !important;
+      height: 36px !important;
+    }
+
+    .van-tabbar-item__icon {
+      margin-bottom: 10px;
     }
   }
 }

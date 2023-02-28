@@ -12,9 +12,9 @@ import * as api from '../api/'
  * 详细文档见：https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/Wechat_webpage_authorization.html
  */
 export function wxLogin(callback) {
-  const appid = '微信公众号appid'
+  const appid = 'wx209b015fd48b823c'
   const url = encodeURIComponent(location.href)
-  const weixinAuth = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${appid}&redirect_uri=${url}&response_type=code&scope=snsapi_userinfo#wechat_redirect`
+  const weixinAuth = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${appid}&redirect_uri=${url}&response_type=code&scope=snsapi_base#wechat_redirect`
 
   const { code } = qs.parse(location.search, {
     ignoreQueryPrefix: true,
@@ -23,13 +23,13 @@ export function wxLogin(callback) {
   // 有 code 则直接通过接口获取微信用户信息
   // 没有，则先通过网页授权回调域名获取 code
   if (code) {
-    api
-      .getWxUserInfo({
-        code,
-      })
-      .then(response => {
-        typeof callback === 'function' && callback(response)
-      })
+    // api
+    //   .getWxUserInfo({
+    //     code,
+    //   })
+    //   .then(response => {
+    //     typeof callback === 'function' && callback(response)
+    //   })
   } else {
     location.href = weixinAuth
   }
